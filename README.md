@@ -18,6 +18,7 @@ running(pid, function(err, live) {
     inspect(err, 'error testing if process is running');
     return;
   }
+  inspect(live, 'is process running?');
 });
 ```
 
