@@ -7,11 +7,10 @@ module.exports = function (pid, cb) {
   }
 
   var cmd = 'kill -0 ' + pid;
-  var child = exec('kill', ['-0', pid], function(err, stdout, stderr) {
+  var child = exec(cmd, function(err, stdout, stderr) {
     if (err) {
-      return cb(err);
+      return cb(null, false);
     }
-    inspect(stdout, 'stdout');
-    inspect(stderr, 'stderr');
+    return cb(null, true);
   });
 };
