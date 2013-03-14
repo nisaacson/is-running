@@ -8,20 +8,29 @@ Dependency tracking by [David](https://david-dm.org/)
 `npm install is-running`
 
 ## Usage
-```javascript
-var inspect = require('eyespect').inspector();
-var running = require('is-running');
 
-var pid = 897245;
+Asyncronously
+```javascript
+var inspect = require('eyespect').inspector()
+var running = require('is-running')
+var pid = 897245
 running(pid, function(err, live) {
   if (err) {
-    inspect(err, 'error testing if process is running');
-    return;
+    inspect(err, 'error testing if process is running')
+    return
   }
-  inspect(live, 'is process running?');
-});
+  inspect(live, 'is process running?')
+})
 ```
-
+Syncronously
+```javascript
+var inspect = require('eyespect').inspector()
+var running = require('is-running')
+var pid = 897245
+var live = running(pid)
+inspect(live, 'is process running?')
+})
+```
 you will need to install eyespect to run the above example
 `npm install eyespect`
 
