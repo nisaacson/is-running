@@ -1,16 +1,31 @@
-var exec = require('child_process').exec;
-var inspect = require('eyespect').inspector();
+var exec = require('child_process').exec
+var tryKill
+var inspect = require('eyespect').inspector({maxLength: 9999999})
 module.exports = function (pid, cb) {
-  if (!cb) {
-    cb = pid;
-    return cb('you must pass a pid as the first argument');
+  var err = null,
+      result = null
+  if (typeof pid !== 'number') {
+    err = "you must pass a pid as the first argument"
   }
+  else {
+    result = tryKill(pid)
+  }
+  if (cb) {
+    return cb(err, result )
+  }
+  if (err) {
+    return err
+  }
+  return result
+}
 
-  var cmd = 'kill -0 ' + pid;
-  var child = exec(cmd, function(err, stdout, stderr) {
-    if (err) {
-      return cb(null, false);
-    }
-    return cb(null, true);
-  });
-};
+tryKill = function(pid) {
+  var result
+  try {
+    result = process.kill(pid,0)
+    return result
+  }
+  catch (e) {
+    return false
+  }
+}
