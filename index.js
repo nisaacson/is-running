@@ -1,6 +1,5 @@
 var exec = require('child_process').exec
 var tryKill
-var inspect = require('eyespect').inspector({maxLength: 9999999})
 module.exports = function (pid, cb) {
   var err = null,
       result = null
