@@ -25,6 +25,6 @@ tryKill = function(pid) {
     return result
   }
   catch (e) {
-    return false
+    return e.code === 'EPERM';
   }
 }
