@@ -1,6 +1,6 @@
 {
   "name": "is-running",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Test if a process with a given pid is running",
   "main": "index.js",
   "directories": {
