@@ -5,7 +5,7 @@ var assert = require('assert')
 var path = require('path')
 var fork = require('child_process').fork
 describe('Check if process with given pid is running', function () {
-  it('using callback should return true as second parameter when is process is running', function (done) {
+  it('using callback should return true as second parameter when process is running', function (done) {
     var childScriptPath = path.join(__dirname, 'dummyChild.js')
     var child = fork(childScriptPath)
     var pid = child.pid
@@ -18,7 +18,7 @@ describe('Check if process with given pid is running', function () {
     })
   })
 
-  it('using callback should return true false when process is not running', function (done) {
+  it('using callback should return false as second parameter when process is not running', function (done) {
     // there could be a better way to get a non-running process besides a really big number
     var pid = 20932842309847
     running(pid, function (err, found) {
@@ -28,7 +28,7 @@ describe('Check if process with given pid is running', function () {
     })
   })
 
-  it('syncronous should return true when is process is running', function () {
+  it('syncronous should return true when process is running', function () {
     var childScriptPath = path.join(__dirname, 'dummyChild.js')
     var child = fork(childScriptPath)
     var pid = child.pid
@@ -38,7 +38,7 @@ describe('Check if process with given pid is running', function () {
     assert.ok(found, 'pid is not running when it should be')
   })
 
-  it('syncronoush should return true when process is not running', function (done) {
+  it('syncronous should return false when process is not running', function (done) {
     // there could be a better way to get a non-running process besides a really big number
     var pid = 20932842309847
     var found = running(pid)
