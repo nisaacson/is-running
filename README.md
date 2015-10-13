@@ -9,19 +9,6 @@ Dependency tracking by [David](https://david-dm.org/)
 
 ## Usage
 
-Asyncronously
-```javascript
-var inspect = require('eyespect').inspector()
-var running = require('is-running')
-var pid = 897245
-running(pid, function(err, live) {
-  if (err) {
-    inspect(err, 'error testing if process is running')
-    return
-  }
-  inspect(live, 'is process running?')
-})
-```
 Syncronously
 ```javascript
 var inspect = require('eyespect').inspector()
