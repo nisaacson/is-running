@@ -1,4 +1,3 @@
-var exec = require('child_process').exec
 var tryKill
 module.exports = function (pid, cb) {
   var err = null,
