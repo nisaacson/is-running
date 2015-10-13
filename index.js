@@ -1,30 +1,8 @@
-var exec = require('child_process').exec
-var tryKill
-module.exports = function (pid, cb) {
-  var err = null,
-      result = null
-  if (typeof pid !== 'number') {
-    err = "you must pass a pid as the first argument"
-  }
-  else {
-    result = tryKill(pid)
-  }
-  if (cb) {
-    return cb(err, result )
-  }
-  if (err) {
-    return err
-  }
-  return result
-}
-
-tryKill = function(pid) {
-  var result
+module.exports = function (pid) {
   try {
-    result = process.kill(pid,0)
-    return result
+    return process.kill(pid,0)
   }
   catch (e) {
-    return e.code === 'EPERM';
+    return e.code === 'EPERM'
   }
 }
