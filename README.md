@@ -16,7 +16,6 @@ var running = require('is-running')
 var pid = 897245
 var live = running(pid)
 inspect(live, 'is process running?')
-})
 ```
 you will need to install eyespect to run the above example
 `npm install eyespect`
